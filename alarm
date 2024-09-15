@@ -1,0 +1,24 @@
+import datetime
+import time
+import winsound
+
+def set_alarm(alarm_time, sound):
+    print(f"Alarm set for {alarm_time}")
+    while True:
+        current_time = datetime.datetime.now()
+        if current_time.hour == alarm_time.hour and current_time.minute == alarm_time.minute:
+            print("Wake up!")
+            winsound.Beep(sound, 1000)
+            break
+        time.sleep(60)
+
+def main():
+    alarm_hour = int(input("Enter alarm hour (24-hour format): "))
+    alarm_minute = int(input("Enter alarm minute: "))
+    alarm_time = datetime.datetime.now()
+    alarm_time = alarm_time.replace(hour=alarm_hour, minute=alarm_minute, second=0)
+    sound = 2500  # Hz
+    set_alarm(alarm_time, sound)
+
+if __name__ == "__main__":
+    main()
