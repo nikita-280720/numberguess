@@ -1,0 +1,19 @@
+import requests
+
+def currency_converter(amount, source, target):
+    response = requests.get(f"(link unavailable)")
+    data = response.json()
+    exchange_rate = data["rates"][target]
+    converted_amount = amount * exchange_rate
+    return converted_amount
+
+def main():
+    print("Currency Converter")
+    amount = float(input("Enter amount: "))
+    source = input("Enter source currency (e.g. USD, EUR, INR): ").upper()
+    target = input("Enter target currency (e.g. USD, EUR, INR): ").upper()
+    converted_amount = currency_converter(amount, source, target)
+    print(f"{amount} {source} = {converted_amount} {target}")
+
+if __name__ == "__main__":
+    main()
